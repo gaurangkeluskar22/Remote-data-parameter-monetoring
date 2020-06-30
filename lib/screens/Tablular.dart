@@ -1,14 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_core/core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:testapp/Shared/header.dart';
 
 import '../Data.dart';
 
@@ -33,9 +31,7 @@ class TabularPageState extends State<TabularPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('RDPM'),
-      ),
+      appBar: header(context, titleText: 'RDPM'),
       body: _buildBody(context),
     );
   }
@@ -65,26 +61,31 @@ class TabularPageState extends State<TabularPage> {
       scrollDirection: Axis.vertical,
       child: Column(
         children: <Widget>[
+          SafeArea(
+            child: Container(
+              height: 20,
+            ),
+          ),
           Row(
             children: <Widget>[
               Expanded(
                   child: Center(
                       child: Text("Date",
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
                           )))),
               Expanded(
                   child: Center(
                 child: Text("Temperature",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     )),
               )),
               Expanded(
                   child: Center(
                 child: Text("Humidity",
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     )),
               )),
             ],

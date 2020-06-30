@@ -2,13 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_core/core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:testapp/Shared/header.dart';
 
 import '../Data.dart';
 
@@ -33,9 +28,7 @@ class _GraphPageState extends State<GraphPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('RDPM'),
-      ),
+      appBar: header(context, titleText: "Graph"),
       body: _buildBody(context),
     );
   }
