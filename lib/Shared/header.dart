@@ -12,6 +12,6 @@ header(context,
     ),
     automaticallyImplyLeading: removeback ? false : true,
     centerTitle: true,
-    backgroundColor: Theme.of(context).accentColor,
+    backgroundColor: Color(0xff0984e3),
   );
 }
