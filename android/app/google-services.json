@@ -8,12 +8,65 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:625273593941:android:8ce54e4c31fb05123574dc",
+        "android_client_info": {
+          "package_name": "com.example.sign_in_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625273593941-iuv67860jfqjj871sbbsa7h8cfog5kmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sign_in_flutter",
+            "certificate_hash": "e8a2483210f46e8621510965d1f0e1a8dbe929b4"
+          }
+        },
+        {
+          "client_id": "625273593941-u1iid0lta1dqau1pnt5a3h2hneod1ls4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sign_in_flutter",
+            "certificate_hash": "5b73e1252b0d6ca1b8846fdea1df3d010ef311eb"
+          }
+        },
+        {
+          "client_id": "625273593941-mn79on8otdact3a3d23vgd9sp7igj0ks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcROiumrWZe9abluLhOamFjK97dT_cUg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625273593941-mn79on8otdact3a3d23vgd9sp7igj0ks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:625273593941:android:d9e96fd5ca6f2a433574dc",
         "android_client_info": {
           "package_name": "com.example.testapp"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "625273593941-6vm18hipi7n5g5fo1blvu8k82vekmdol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testapp",
+            "certificate_hash": "e8a2483210f46e8621510965d1f0e1a8dbe929b4"
+          }
+        },
         {
           "client_id": "625273593941-mn79on8otdact3a3d23vgd9sp7igj0ks.apps.googleusercontent.com",
           "client_type": 3

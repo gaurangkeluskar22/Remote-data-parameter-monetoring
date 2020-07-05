@@ -37,7 +37,7 @@ class _GraphPageState extends State<GraphPage> {
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance
           .collection('Sensor-Data')
-          .orderBy("timestamp")
+          .orderBy('timestamp')
           .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
