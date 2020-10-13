@@ -13,6 +13,6 @@ class Data {
         assert(map['temp'] != null),
         assert(map['timestamp'] != null),
         humidity = map['humidity'],
-        temp = (map['temp']/50)*100,
+        temp = ((map['temp']/50)*100).round(),
         timestamp = DateFormat('dd/MM/yy hh:mm:ss').format(DateTime.fromMillisecondsSinceEpoch(map['timestamp']*1000));
 }

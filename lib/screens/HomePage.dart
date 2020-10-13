@@ -3,17 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:testapp/Shared/progress.dart';
-import 'package:testapp/models/user_model.dart';
-import 'package:testapp/screens/Graph.dart';
-import 'package:testapp/screens/Tablular.dart';
+import '../Shared/progress.dart';
+import '../models/user_model.dart';
+import '../screens/Graph.dart';
+import '../screens/Tablular.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 final FirebaseAuth auth = FirebaseAuth.instance;
-FirebaseUser user;
-User currentUser;
+User user;
+User1 currentUser;
 
-final userRef = Firestore.instance.collection('users');
+final userRef = FirebaseFirestore.instance.collection('users');
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,11 +29,11 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    auth.currentUser().then((user) {
+    user=auth.currentUser;
       if (user != null) {
-        userRef.document(user.uid).get().then((doc) {
+        userRef.doc(user.uid).get().then((doc) {
           DocumentSnapshot documentSnapshot = doc;
-          currentUser = User.fromDocument(documentSnapshot);
+          currentUser = User1.fromDocument(documentSnapshot);
           setState(() {
             isAuth = true;
           });
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           isLoading = false;
         });
       }
-    });
+    
 
     pageController = PageController(initialPage: 0);
   }
@@ -150,27 +150,27 @@ class _HomePageState extends State<HomePage> {
     final GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
+    final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleSignInAuthentication.idToken,
         accessToken: googleSignInAuthentication.accessToken);
 
-    final AuthResult authResult = await auth.signInWithCredential(credential);
+    final  authResult = await auth.signInWithCredential(credential);
     user = authResult.user;
     print('User created : ${user.displayName}');
 
-    final FirebaseUser firebaseUser = await auth.currentUser();
+    final User firebaseUser = await auth.currentUser;
 
     // Let's add user to database
-    userRef.document(firebaseUser.uid).setData({
+    userRef.doc(firebaseUser.uid).set({
       'id': firebaseUser.uid,
-      'photoUrl': firebaseUser.photoUrl,
+      'photoUrl': firebaseUser.photoURL,
       'email': firebaseUser.email,
       'displayName': firebaseUser.displayName,
     });
 
     DocumentSnapshot documentSnapshot =
-        await userRef.document(firebaseUser.uid).get();
-    currentUser = User.fromDocument(documentSnapshot);
+        await userRef.doc(firebaseUser.uid).get();
+    currentUser = User1.fromDocument(documentSnapshot);
 
     setState(() {
       isAuth = true;
