@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:testapp/Shared/header.dart';
+import '../Shared/header.dart';
 
 import '../Data.dart';
 
@@ -38,7 +38,7 @@ class TabularPageState extends State<TabularPage> {
 
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance
+      stream: FirebaseFirestore.instance
           .collection('Sensor-Data')
           .orderBy("timestamp")
           .snapshots(),
@@ -46,8 +46,8 @@ class TabularPageState extends State<TabularPage> {
         if (!snapshot.hasData) {
           return LinearProgressIndicator();
         } else {
-          tempdata = snapshot.data.documents
-              .map((documentSnapshot) => Data.fromMap(documentSnapshot.data))
+          tempdata = snapshot.data.docs
+              .map((documentSnapshot) => Data.fromMap(documentSnapshot.data()))
               .toList();
 
           return _buildChart(context, tempdata);

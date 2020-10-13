@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:testapp/Shared/header.dart';
+import '../Shared/header.dart';
 
 import '../Data.dart';
 
@@ -35,7 +35,7 @@ class _GraphPageState extends State<GraphPage> {
 
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance
+      stream: FirebaseFirestore.instance
           .collection('Sensor-Data')
           .orderBy('timestamp')
           .snapshots(),
@@ -43,8 +43,9 @@ class _GraphPageState extends State<GraphPage> {
         if (!snapshot.hasData) {
           return LinearProgressIndicator();
         } else {
-          tempdata = snapshot.data.documents
-              .map((documentSnapshot) => Data.fromMap(documentSnapshot.data))
+          tempdata = snapshot.data.docs
+              .map((DocumentSnapshot documentSnapshot) =>
+                  Data.fromMap(documentSnapshot.data()))
               .toList();
 
           return _buildChart(context, tempdata);
